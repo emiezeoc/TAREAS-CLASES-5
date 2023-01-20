@@ -26,6 +26,7 @@ function crearFormularios($cantidadDeClases){
     $inputsHoras.id = `horas-${i+1}`
     $inputsHoras.className= "horas"
     $inputsHoras.placeholder= "hs"
+    $inputsHoras.type= "number"
 
     let $labelMinutos = document.createElement("label")
     $labelMinutos.for= `minutos-${i+1}`
@@ -35,6 +36,7 @@ function crearFormularios($cantidadDeClases){
     $inputsMinutos.id = `minutos-${i+1}`
     $inputsMinutos.className= "minutos"
     $inputsMinutos.placeholder= "mins"
+    $inputsMinutos.type= "number"
 
     let $labelSegundos = document.createElement("label")
     $labelSegundos.for = `segundos-${i+1}`
@@ -44,6 +46,7 @@ function crearFormularios($cantidadDeClases){
     $inputsSegundos.id = `segundos-${i+1}`
     $inputsSegundos.className = "segundos"
     $inputsSegundos.placeholder = "seg"
+    $inputsSegundos.type ="number"
 
     nodoPagina.appendChild($labelHoras)
     nodoPagina.appendChild($inputsHoras)
@@ -64,6 +67,7 @@ function crearFormularios($cantidadDeClases){
 
 function crearBotonResultado(){
     const $botonDeCalculo = document.createElement("button")
+    $botonDeCalculo.type= "button"
     $botonDeCalculo.id = "resultado"
     $botonDeCalculo.textContent = "RESULTADO"
 
