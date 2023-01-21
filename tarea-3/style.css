@@ -1,0 +1,11 @@
+body{
+    background-color: gray;
+}
+
+header{
+    text-align: center;
+}
+
+.oculto{
+    display:none;
+}
