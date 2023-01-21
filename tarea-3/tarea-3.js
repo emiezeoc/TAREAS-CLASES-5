@@ -1,20 +1,24 @@
 const $botonCrearFormulario = document.querySelector("#crear-formulario");
-let $cantidadDeClases;
+const $botonMostrarResultado = document.querySelector("#boton-mostrar-resultado")
+
+const $formularioDeVideos = document.querySelector("#formulario-creado")
+const $resultado = document.querySelector("#resultado")
 
 $botonCrearFormulario.onclick = function(){
-    $cantidadDeClases = Number(document.querySelector("#cantidad-clases").value);
-
+    mostrarBotonResultado()
+    const $cantidadDeClases = Number(document.querySelector("#cantidad-clases").value);
     crearFormularios($cantidadDeClases)
-    crearBotonResultado()
-
+    ocultarBotonCrearFormulario()
+    
     return $cantidadDeClases;
 }
 
-
-
+function mostrarBotonResultado(){
+    $botonMostrarResultado.className= ""
+    return false
+}
 
 function crearFormularios($cantidadDeClases){
-    const nodoPagina = document.querySelector("div")
 
     for (let i = 0; i < $cantidadDeClases; i++) {
 
@@ -48,57 +52,66 @@ function crearFormularios($cantidadDeClases){
     $inputsSegundos.placeholder = "seg"
     $inputsSegundos.type ="number"
 
-    nodoPagina.appendChild($labelHoras)
-    nodoPagina.appendChild($inputsHoras)
+    $formularioDeVideos.appendChild($labelHoras)
+    $formularioDeVideos.appendChild($inputsHoras)
 
-    nodoPagina.appendChild($labelMinutos)
-    nodoPagina.appendChild($inputsMinutos)
+    $formularioDeVideos.appendChild($labelMinutos)
+    $formularioDeVideos.appendChild($inputsMinutos)
 
-    nodoPagina.appendChild($labelSegundos)
-    nodoPagina.appendChild($inputsSegundos)
+    $formularioDeVideos.appendChild($labelSegundos)
+    $formularioDeVideos.appendChild($inputsSegundos)
     }
 
-    $inputsHoras = Number(document.querySelectorAll(".horas").value)
-    $inputsMinutos = Number(document.querySelectorAll(".minutos").value)
-    $inputsSegundos = Number(document.querySelectorAll(".segundos").value)
-
-    return $inputsHoras, $inputsMinutos, $inputsSegundos;
+    return false;
 }
 
-function crearBotonResultado(){
-    const $botonDeCalculo = document.createElement("button")
-    $botonDeCalculo.type= "button"
-    $botonDeCalculo.id = "resultado"
-    $botonDeCalculo.textContent = "RESULTADO"
+function ocultarBotonCrearFormulario(){
+    $botonCrearFormulario.className = "oculto"
+} 
 
-    const nodoForm= document.querySelector("form")
+$botonMostrarResultado.onclick = function(){
 
-    nodoForm.appendChild($botonDeCalculo)
+    const horas = document.querySelectorAll(".horas");
+    const minutos = document.querySelectorAll(".minutos");
+    const segundos = document.querySelectorAll(".segundos");
 
-    return false
+    calcularTiempo(horas,minutos, segundos)
+
+
+    return false;
 }
 
-function calcularTiempo($inputsHoras,$inputsMinutos,$inputsSegundos){
-
+function calcularTiempo(horas, minutos, segundos){
+    
     let totalHoras = 0;
     let totalMinutos = 0;
     let totalSegundos = 0;
 
-    for (let i = 0; i < $inputsSegundos; i++) {
-        totalSegundos += Number($inputsSegundos[i].value)  
+    for (let i = 0; i < segundos.length; i++) {
+        totalSegundos += Number(segundos[i].value || 0)  
     }
 
-    for (let i = 0; i < $inputsMinutos; i++) {
-        totalMinutos += Number($inputsMinutos[i].value)  
+    for (let i = 0; i < minutos.length; i++) {
+        totalMinutos += Number(minutos[i].value)  
     }
 
-    for (let i = 0; i < $inputsHoras; i++) {
-        totalHoras += Number($inputsHoras[i].value)  
+    for (let i = 0; i < horas.length; i++) {
+        totalHoras += Number(horas[i].value)  
     }
-    console.log(totalHoras)
-    console.log(totalMinutos)
-    console.log(totalSegundos)
+
+    mostrarResultado(totalHoras, totalMinutos, totalSegundos)
 
 
     return totalHoras, totalMinutos, totalSegundos;
 }
+
+function mostrarResultado(totalHoras, totalMinutos, totalSegundos) {
+
+console.log (totalHoras)
+console.log (totalMinutos)
+console.log (totalSegundos)
+
+console.log('Esto esta funcionando')
+    return false
+}
+
