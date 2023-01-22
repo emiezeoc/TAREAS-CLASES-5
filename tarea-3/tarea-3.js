@@ -95,9 +95,10 @@ function calcularTiempo(horas, minutos, segundos){
 
     for (let i = 0; i < minutos.length; i++) {
         totalMinutos += Number(minutos[i].value)
-        if(totalMinutos > 59)
+        if(totalMinutos > 59){
            totalMinutos = totalMinutos -60
            totalHoras++  
+        }
     }
 
     for (let i = 0; i < horas.length; i++) {
