@@ -111,10 +111,9 @@ function calcularTiempo(horas, minutos, segundos){
 }
 
 function mostrarResultado(totalHoras, totalMinutos, totalSegundos) {
-
-const $outputResultado = document.querySelector("#output-mostrar-resultado")
-$outputResultado.className = ""
-$outputResultado.value= `Has visto ${totalHoras} horas, ${totalMinutos} minutos y ${totalSegundos} de videos hasta ahora`
+    const $outputResultado = document.querySelector("#output-mostrar-resultado")
+    $outputResultado.className = ""
+    $outputResultado.value= `Has visto ${totalHoras} horas, ${totalMinutos} minutos y ${totalSegundos} de videos hasta ahora`
 
     return false;
 }
