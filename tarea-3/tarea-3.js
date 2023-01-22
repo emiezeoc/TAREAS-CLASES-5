@@ -70,13 +70,11 @@ function ocultarBotonCrearFormulario(){
 } 
 
 $botonMostrarResultado.onclick = function(){
-
     const horas = document.querySelectorAll(".horas");
     const minutos = document.querySelectorAll(".minutos");
     const segundos = document.querySelectorAll(".segundos");
 
     calcularTiempo(horas,minutos, segundos)
-
 
     return false;
 }
@@ -88,11 +86,18 @@ function calcularTiempo(horas, minutos, segundos){
     let totalSegundos = 0;
 
     for (let i = 0; i < segundos.length; i++) {
-        totalSegundos += Number(segundos[i].value || 0)  
+        totalSegundos += Number(segundos[i].value)
+        if (totalSegundos > 59) { 
+            totalSegundos = totalSegundos - 60
+            totalMinutos++
+        }
     }
 
     for (let i = 0; i < minutos.length; i++) {
-        totalMinutos += Number(minutos[i].value)  
+        totalMinutos += Number(minutos[i].value)
+        if(totalMinutos > 59)
+           totalMinutos = totalMinutos -60
+           totalHoras++  
     }
 
     for (let i = 0; i < horas.length; i++) {
@@ -101,17 +106,14 @@ function calcularTiempo(horas, minutos, segundos){
 
     mostrarResultado(totalHoras, totalMinutos, totalSegundos)
 
-
     return totalHoras, totalMinutos, totalSegundos;
 }
 
 function mostrarResultado(totalHoras, totalMinutos, totalSegundos) {
 
-console.log (totalHoras)
-console.log (totalMinutos)
-console.log (totalSegundos)
+const $outputResultado = document.querySelector("#output-mostrar-resultado")
+$outputResultado.className = ""
+$outputResultado.value= `Has visto ${totalHoras} horas, ${totalMinutos} minutos y ${totalSegundos} de videos hasta ahora`
 
-console.log('Esto esta funcionando')
-    return false
+    return false;
 }
-
