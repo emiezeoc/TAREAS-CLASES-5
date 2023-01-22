@@ -12,7 +12,7 @@
     <form>
         <div>
         <label for="cantidad-clases">¿Cuantas clases de r/argentinaprograma has visto hasta ahora?</label>
-        <input type="number" id="cantidad-clases" placeholder="Numero entre 1 y 19"/>
+        <input type="number" id="cantidad-clases" min="0" max= "19"  />
         <button type="button" id="crear-formulario">CREAR FORMULARIO</button>
         </div>
 
@@ -21,7 +21,7 @@
             
         </div>
     <button type="button" id="boton-mostrar-resultado" class="oculto">Mostrar resultado</button>
-    <input type="text" disable id="mostrar-resultado" class="oculto"/>
+    <input type="text" disabled id="output-mostrar-resultado" class="oculto"/>
     </form>
 
 <p id="resultado"></p>
