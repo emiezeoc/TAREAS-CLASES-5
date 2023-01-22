@@ -1,0 +1,27 @@
+body{
+    background-color: gray;
+}
+
+header{
+    text-align: center;
+}
+
+input{
+    margin: 10px;
+    padding: 2px;
+}
+
+#formulario-creado{
+    width: 980px;
+
+}
+
+#output-mostrar-resultado{
+    width: 450px;
+
+    
+}
+
+.oculto{
+    display:none;
+}
